@@ -1,4 +1,5 @@
 import asyncHandler from 'express-async-handler';
+import generateToken from '../utils/generateToken.js';
 import User from '../models/userModel.js';
 
 //! public
@@ -12,7 +13,7 @@ const authUser = asyncHandler(async (req, res) => {
 //* POST /api/users/register - register new user
 const registerUser = asyncHandler(async (req, res) => {
     const { name, email, password } = req.body;
-    const userExists = await User.findOne(email);
+    const userExists = await User.findOne({email});
     if (userExists) {
         res.status(400);
         throw new Error('User already exists');
@@ -25,6 +26,7 @@ const registerUser = asyncHandler(async (req, res) => {
     });
 
     if (user) {
+        generateToken(res, user._id);
         res.status(201).json({
             _id: user._id,
             name: user.name,
