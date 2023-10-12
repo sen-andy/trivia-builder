@@ -1,0 +1,23 @@
+#login-form {
+    width: 40%;
+    max-width: 520px;
+}
+
+#login-form > form > div {
+    gap: 0.5em;
+}
+
+#login-form > form > div > input {
+    padding: 0.5em;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+#login-form > form > button {
+    width: max-content;
+    padding: 0.5em;
+    background-color: var(--accent-color);
+    color: var(--clue-color);
+    border: none;
+    border-radius: 5px;
+}
