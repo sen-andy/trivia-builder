@@ -1,63 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @font-face {
   font-family: "Korinna";
-  src: url("../assets/OPTIKorinna-Agency.otf");
+  src: url("./src/assets/OPTIKorinna-Agency.otf");
 }
 
-:root {
-  --clue-color: #e8f2ff;
-  --money-color: #ffef85;
-  --accent-color: #0e60b9;
-  --dark-color: #112A46;
-  --accept-color: #b8e994;
-  --cancel-color: #fab1a0;
+@layer base {
+  * {
+    @apply p-0 m-0;
+  }
+  
+  p, a, h1, h2, h3, label {
+    @apply font-sans text-dark;
+  }
 
-  --question-font: "Korinna", Courier, monospace;
+  h1 {
+    @apply text-4xl;
+  }
 }
 
-* {
-  margin: 0;
-  padding: 0;
-}
+@layer components {
+  .light-border-bg {
+    @apply bg-white border-gray border-solid border-[1px] rounded p-8 pt-6
+  }
 
-p, a, h1, h2, h3, label {
-  font-family: Arial, Helvetica, sans-serif;
-  color: var(--dark-color);
-}
+  .input {
+    @apply p-2 border-[1px] border-solid border-gray rounded;
+  }
 
-.wrap {
-  position: relative;
-  margin: 0 auto;
-  width: 80%;
-}
+  .btn-blue {
+    @apply w-max p-2 bg-highlight text-light border-none rounded;
+  }
 
-.col {
-  display: flex;
-  flex-direction: column;
-}
-
-.row {
-  display: flex;
-}
-
-.center {
-  justify-content: center;
-  align-items: center;
-}
-
-.gap-1 {
-  gap: 1em;
-}
-
-.light-border-bg {
-  background-color: whitesmoke;
-  border: 1px solid lightgray;
-  border-radius: 5px;
-  padding: 30px;
-  padding-top: 23px;
-}
-
-@media (max-width: 767px) {
-  .m-hide {
-    display: none;
+  .col {
+    @apply flex flex-col;
   }
 }

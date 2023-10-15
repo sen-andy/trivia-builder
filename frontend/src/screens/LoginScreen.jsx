@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './loginScreen.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLoginMutation } from '../slices/usersApiSlice';
 import { setCredentials } from '../slices/authSlice';
@@ -34,14 +33,15 @@ const LoginScreen = () => {
     }
 
     return (
-        <div className='col center'>
-            <div id='login-form' className='light-border-bg col gap-1'>
+        <div className='container mx-auto flex justify-center items-center'>
+            <div className='light-border-bg col gap-4 w-full max-w-lg'>
                 <h1>Sign In</h1>
 
-                <form className='col gap-1' onSubmit={submitHandler}>
+                <form className='col gap-4 [&>div]:gap-2' onSubmit={submitHandler}>
                     <div className='col'>
                         <label htmlFor="email">Email Address</label>
                         <input
+                            className='input'
                             type="email"
                             placeholder='Enter Email'
                             value={email}
@@ -51,15 +51,16 @@ const LoginScreen = () => {
                     <div className='col'>
                         <label htmlFor="password">Password</label>
                         <input
+                            className='input'
                             type="password"
                             placeholder='Enter Password'
                             value={password}
                             onChange={e => setPassword(e.target.value)}
                         />
                     </div>
-                    <button type='submit'>Sign In</button>
-                    <div className='row'>
-                        <p>New Customer? </p>
+                    <button className='btn-blue' type='submit'>Sign In</button>
+                    <div className='flex'>
+                        <p>New Customer?</p>
                         <Link to="/register">Register</Link>
                     </div>
                 </form>
