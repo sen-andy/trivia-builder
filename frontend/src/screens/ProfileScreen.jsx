@@ -1,27 +1,26 @@
 ;import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { useRegisterMutation } from '../slices/usersApiSlice';
 import { setCredentials } from '../slices/authSlice';
 import Loader from '../components/Loader';
 import { toast } from 'react-toastify';
+import { useUpdateUserMutation } from '../slices/usersApiSlice';
 
 
-const RegisterScreen = () => {
+const ProfileScreen = () => {
     const [ name, setName ] = useState("");
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
     const [ confirmPW, setConfirmPW ] = useState("");
 
-    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const { userInfo } = useSelector((state) => state.auth);
-    const [ register, { isLoading, error }] = useRegisterMutation();
+    const [ updateUser, { isLoading }] = useUpdateUserMutation();
 
     useEffect(() => {
-        if (userInfo) navigate('/');
-    }, [ userInfo, navigate ]);
+        setName(userInfo.name);
+        setEmail(userInfo.email);
+    }, [userInfo.setName, userInfo.setEmail]);
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -29,9 +28,14 @@ const RegisterScreen = () => {
             toast.error("Passwords do not match");
         } else {
             try {
-                const res = await register({ name, email, password }).unwrap();
+                const res = await updateUser({
+                    _id: userInfo._id,
+                    name,
+                    email,
+                    password
+                }).unwrap();
                 dispatch(setCredentials({...res}));
-                navigate('/');
+                toast.success('Profile Updated');
             } catch (err) {
                 toast.error(err?.data?.message || err.error);
             }
@@ -41,7 +45,7 @@ const RegisterScreen = () => {
     return (
         <div className='container mx-auto flex justify-center items-center'>
             <div className='light-border-bg col gap-4 w-full max-w-lg'>
-                <h1>Sign Up</h1>
+                <h1>Update Profile</h1>
 
                 <form className='col gap-4 [&>div]:gap-2' onSubmit={submitHandler}>
                     <div className='col'>
@@ -85,15 +89,11 @@ const RegisterScreen = () => {
                         />
                     </div>
                     { isLoading && <Loader /> }
-                    <button className='btn-blue' type='submit'>Sign Up</button>
-                    <div className='flex'>
-                        <p>Have an account?</p>
-                        <Link to="/login">Login</Link>
-                    </div>
+                    <button className='btn-blue' type='submit'>Update</button>
                 </form>
             </div>
         </div>
     )
 }
 
-export default RegisterScreen;
+export default ProfileScreen;

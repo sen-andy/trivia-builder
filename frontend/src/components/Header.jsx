@@ -1,15 +1,33 @@
-import { Link } from 'react-router-dom';
+import { Fragment } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon, Bars3Icon, PencilSquareIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/20/solid'
 import { useSelector, useDispatch } from 'react-redux';
-import { Fragment } from 'react';
+import { useLogoutMutation } from '../slices/usersApiSlice';
+import { logout } from '../slices/authSlice';
+import { toast } from 'react-toastify';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { userInfo } = useSelector((state) => state.auth);
+  const [ logoutApiCall ] = useLogoutMutation()
+  
+  const logoutHandler = async (e) => {
+    try {
+      const res = await logoutApiCall().unwrap();
+      toast.info(res.message);
+      dispatch(logout());
+      navigate('/');
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
+  }
 
   return (
     <header>
@@ -40,28 +58,28 @@ const Header = () => {
                       <div className="py-1 text-right">
                         <Menu.Item>
                           {({ active }) => (
-                            <a
-                              href="#"
+                            <Link
+                              to='/profile'
                               className={classNames(
                                 active ? 'bg-slate-200 text-slate-950' : 'text-dark',
                                 'block px-4 py-2'
                               )}
                             >
                               Profile
-                            </a>
+                            </Link>
                           )}
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
-                            <a
-                              href="#"
+                            <Link
+                              onClick={e => logoutHandler(e)}
                               className={classNames(
                                 active ? 'bg-slate-200 text-slate-950' : 'text-dark',
                                 'block px-4 py-2'
                               )}
                             >
                               Logout
-                            </a>
+                            </Link>
                           )}
                         </Menu.Item>
                       </div>

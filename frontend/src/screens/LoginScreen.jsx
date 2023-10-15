@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useLoginMutation } from '../slices/usersApiSlice';
 import { setCredentials } from '../slices/authSlice';
 import { toast } from 'react-toastify';
+import Loader from '../components/Loader';
 
 const LoginScreen = () => {
     const [ email, setEmail ] = useState("");
@@ -58,6 +59,7 @@ const LoginScreen = () => {
                             onChange={e => setPassword(e.target.value)}
                         />
                     </div>
+                    { isLoading && <Loader /> }
                     <button className='btn-blue' type='submit'>Sign In</button>
                     <div className='flex'>
                         <p>New Customer?</p>
