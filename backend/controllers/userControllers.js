@@ -66,9 +66,9 @@ const logoutUser = asyncHandler(async (req, res) => {
 //* GET /api/users/profile - get user's profile
 const getUserProfile = asyncHandler(async (req, res) => {
     const user = {
-        _id: user._id,
-        name: user.name,
-        email: user.email
+        _id: req.user._id,
+        name: req.user.name,
+        email: req.user.email
     };
 
     res.status(200).json(user);
@@ -95,7 +95,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
         })
     } else {
         res.status(404);
-        throw new Error("User not found");
+        throw new Error('User not found');
     }
 });
 

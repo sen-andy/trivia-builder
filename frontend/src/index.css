@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Korinna";
-  src: url("./src/assets/OPTIKorinna-Agency.otf");
+  font-family: 'Korinna';
+  src: url('./src/assets/OPTIKorinna-Agency.otf');
 }
 
 @layer base {

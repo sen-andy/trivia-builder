@@ -8,10 +8,10 @@ import { toast } from 'react-toastify';
 
 
 const RegisterScreen = () => {
-    const [ name, setName ] = useState("");
-    const [ email, setEmail ] = useState("");
-    const [ password, setPassword ] = useState("");
-    const [ confirmPW, setConfirmPW ] = useState("");
+    const [ name, setName ] = useState('');
+    const [ email, setEmail ] = useState('');
+    const [ password, setPassword ] = useState('');
+    const [ confirmPW, setConfirmPW ] = useState('');
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const RegisterScreen = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
         if (password !== confirmPW) {
-            toast.error("Passwords do not match");
+            toast.error('Passwords do not match');
         } else {
             try {
                 const res = await register({ name, email, password }).unwrap();
@@ -45,40 +45,40 @@ const RegisterScreen = () => {
 
                 <form className='col gap-4 [&>div]:gap-2' onSubmit={submitHandler}>
                     <div className='col'>
-                        <label htmlFor="name">Full Name</label>
+                        <label htmlFor='name'>Full Name</label>
                         <input
                             className='input'
-                            type="text"
+                            type='text'
                             placeholder='Enter Full Name'
                             value={name}
                             onChange={e => setName(e.target.value)}
                         />
                     </div>
                     <div className='col'>
-                        <label htmlFor="email">Email Address</label>
+                        <label htmlFor='email'>Email Address</label>
                         <input
                             className='input'
-                            type="email"
+                            type='email'
                             placeholder='Enter Email'
                             value={email}
                             onChange={e => setEmail(e.target.value)}
                         />
                     </div>
                     <div className='col'>
-                        <label htmlFor="password">Password</label>
+                        <label htmlFor='password'>Password</label>
                         <input
                             className='input'
-                            type="password"
+                            type='password'
                             placeholder='Enter Password'
                             value={password}
                             onChange={e => setPassword(e.target.value)}
                         />
                     </div>
                     <div className='col'>
-                        <label htmlFor="confirmPW">Confirm Password</label>
+                        <label htmlFor='confirmPW'>Confirm Password</label>
                         <input
                             className='input'
-                            type="password"
+                            type='password'
                             placeholder='Confirm Password'
                             value={confirmPW}
                             onChange={e => setConfirmPW(e.target.value)}
@@ -88,7 +88,7 @@ const RegisterScreen = () => {
                     <button className='btn-blue' type='submit'>Sign Up</button>
                     <div className='flex'>
                         <p>Have an account?</p>
-                        <Link to="/login">Login</Link>
+                        <Link to='/login'>Login</Link>
                     </div>
                 </form>
             </div>

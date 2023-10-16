@@ -7,8 +7,8 @@ import { toast } from 'react-toastify';
 import Loader from '../components/Loader';
 
 const LoginScreen = () => {
-    const [ email, setEmail ] = useState("");
-    const [ password, setPassword ] = useState("");
+    const [ email, setEmail ] = useState('');
+    const [ password, setPassword ] = useState('');
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -40,20 +40,20 @@ const LoginScreen = () => {
 
                 <form className='col gap-4 [&>div]:gap-2' onSubmit={submitHandler}>
                     <div className='col'>
-                        <label htmlFor="email">Email Address</label>
+                        <label htmlFor='email'>Email Address</label>
                         <input
                             className='input'
-                            type="email"
+                            type='email'
                             placeholder='Enter Email'
                             value={email}
                             onChange={e => setEmail(e.target.value)}
                         />
                     </div>
                     <div className='col'>
-                        <label htmlFor="password">Password</label>
+                        <label htmlFor='password'>Password</label>
                         <input
                             className='input'
-                            type="password"
+                            type='password'
                             placeholder='Enter Password'
                             value={password}
                             onChange={e => setPassword(e.target.value)}
@@ -63,7 +63,7 @@ const LoginScreen = () => {
                     <button className='btn-blue' type='submit'>Sign In</button>
                     <div className='flex'>
                         <p>New Customer?</p>
-                        <Link to="/register">Register</Link>
+                        <Link to='/register'>Register</Link>
                     </div>
                 </form>
             </div>

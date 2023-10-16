@@ -37,25 +37,25 @@ const Header = () => {
               <Link className='text-2xl font-[600] no-underline text-light' to='/'>Trivia Builder</Link>
               { userInfo ? (
                 <>
-                <Menu as="div" className="relative inline-block text-left">
+                <Menu as='div' className='relative inline-block text-left'>
                   <div>
-                    <Menu.Button className="inline-flex w-full items-center justify-center gap-x-1.5 px-3 py-2 font-semibold text-light">
+                    <Menu.Button className='inline-flex w-full items-center justify-center gap-x-1.5 px-3 py-2 font-semibold text-light'>
                       {userInfo.name}
-                      <ChevronDownIcon className="-mr-1 h-6 w-6 text-white" aria-hidden="true" />
+                      <ChevronDownIcon className='-mr-1 h-6 w-6 text-white' aria-hidden='true' />
                     </Menu.Button>
                   </div>
 
                   <Transition
                     as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
+                    enter='transition ease-out duration-100'
+                    enterFrom='transform opacity-0 scale-95'
+                    enterTo='transform opacity-100 scale-100'
+                    leave='transition ease-in duration-75'
+                    leaveFrom='transform opacity-100 scale-100'
+                    leaveTo='transform opacity-0 scale-95'
                   >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-dark ring-opacity-5 focus:outline-none">
-                      <div className="py-1 text-right">
+                    <Menu.Items className='absolute right-0 z-10 mt-2 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-dark ring-opacity-5 focus:outline-none'>
+                      <div className='py-1 text-right'>
                         <Menu.Item>
                           {({ active }) => (
                             <Link
@@ -89,24 +89,24 @@ const Header = () => {
                 </>
               ) : (
                 <>
-                <Menu as="div" className="relative inline-block text-left md:hidden">
+                <Menu as='div' className='relative inline-block text-left md:hidden'>
                   <div>
                     <Menu.Button className='bg-none text-light rounded-sm h-7 w-7'>
-                      <Bars3Icon className='mx-auto h-6 w-6 text-white" aria-hidden="true' />
+                      <Bars3Icon className='mx-auto h-6 w-6 text-white' aria-hidden='true' />
                     </Menu.Button>
                   </div>
 
                   <Transition
                     as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
+                    enter='transition ease-out duration-100'
+                    enterFrom='transform opacity-0 scale-95'
+                    enterTo='transform opacity-100 scale-100'
+                    leave='transition ease-in duration-75'
+                    leaveFrom='transform opacity-100 scale-100'
+                    leaveTo='transform opacity-0 scale-95'
                   >
-                    <Menu.Items className="absolute right-0 min-w-max z-10 mt-2 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-dark ring-opacity-5 focus:outline-none">
-                      <div className="py-1 text-right">
+                    <Menu.Items className='absolute right-0 min-w-max z-10 mt-2 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-dark ring-opacity-5 focus:outline-none'>
+                      <div className='py-1 text-right'>
                         <Menu.Item>
                           {({ active }) => (
                             <Link className={classNames(
@@ -117,7 +117,7 @@ const Header = () => {
                               'gap-2',
                               'no-underline'
                             )} to='/login'>
-                              <ArrowRightOnRectangleIcon className="h-5 w-5" />
+                              <ArrowRightOnRectangleIcon className='h-5 w-5' />
                               Sign In
                             </Link>
                           )}
@@ -132,7 +132,7 @@ const Header = () => {
                               'gap-2',
                               'no-underline',
                             )} to='/login'>
-                              <PencilSquareIcon className="h-5 w-5" />
+                              <PencilSquareIcon className='h-5 w-5' />
                               Sign Up
                             </Link>
                           )}
@@ -147,11 +147,11 @@ const Header = () => {
                     md:visible md:flex-row md:gap-4 md:static md:drop-shadow-none md:p-0'
                   >
                   <Link className='flex text-xl items-center gap-2 no-underline text-light' to='/login'>
-                    <ArrowRightOnRectangleIcon className="h-5 w-5" />
+                    <ArrowRightOnRectangleIcon className='h-5 w-5' />
                     Sign In
                   </Link>
                   <Link className='flex text-xl items-center gap-2 no-underline text-light' to='/register'>
-                    <PencilSquareIcon className="h-5 w-5" />
+                    <PencilSquareIcon className='h-5 w-5' />
                     Sign Up
                   </Link>
                 </div>

@@ -7,10 +7,10 @@ import { useUpdateUserMutation } from '../slices/usersApiSlice';
 
 
 const ProfileScreen = () => {
-    const [ name, setName ] = useState("");
-    const [ email, setEmail ] = useState("");
-    const [ password, setPassword ] = useState("");
-    const [ confirmPW, setConfirmPW ] = useState("");
+    const [ name, setName ] = useState('');
+    const [ email, setEmail ] = useState('');
+    const [ password, setPassword ] = useState('');
+    const [ confirmPW, setConfirmPW ] = useState('');
 
     const dispatch = useDispatch();
 
@@ -25,7 +25,7 @@ const ProfileScreen = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
         if (password !== confirmPW) {
-            toast.error("Passwords do not match");
+            toast.error('Passwords do not match');
         } else {
             try {
                 const res = await updateUser({
@@ -49,40 +49,40 @@ const ProfileScreen = () => {
 
                 <form className='col gap-4 [&>div]:gap-2' onSubmit={submitHandler}>
                     <div className='col'>
-                        <label htmlFor="name">Full Name</label>
+                        <label htmlFor='name'>Full Name</label>
                         <input
                             className='input'
-                            type="text"
+                            type='text'
                             placeholder='Enter Full Name'
                             value={name}
                             onChange={e => setName(e.target.value)}
                         />
                     </div>
                     <div className='col'>
-                        <label htmlFor="email">Email Address</label>
+                        <label htmlFor='email'>Email Address</label>
                         <input
                             className='input'
-                            type="email"
+                            type='email'
                             placeholder='Enter Email'
                             value={email}
                             onChange={e => setEmail(e.target.value)}
                         />
                     </div>
                     <div className='col'>
-                        <label htmlFor="password">Password</label>
+                        <label htmlFor='password'>Password</label>
                         <input
                             className='input'
-                            type="password"
+                            type='password'
                             placeholder='Enter Password'
                             value={password}
                             onChange={e => setPassword(e.target.value)}
                         />
                     </div>
                     <div className='col'>
-                        <label htmlFor="confirmPW">Confirm Password</label>
+                        <label htmlFor='confirmPW'>Confirm Password</label>
                         <input
                             className='input'
-                            type="password"
+                            type='password'
                             placeholder='Confirm Password'
                             value={confirmPW}
                             onChange={e => setConfirmPW(e.target.value)}
