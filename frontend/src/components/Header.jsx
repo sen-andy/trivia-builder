@@ -32,7 +32,7 @@ const Header = () => {
   return (
     <header>
         <nav className='bg-highlight h-14 shadow-2xl mb-8'>
-          <div className='container mx-auto h-full transition-all'>
+          <div className='container mx-auto h-full'>
             <div className='flex justify-between mx-4 items-center h-full'>
               <Link className='text-2xl font-[600] no-underline text-light' to='/'>Trivia Builder</Link>
               { userInfo ? (

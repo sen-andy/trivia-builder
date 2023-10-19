@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'Korinna';
-  src: url('./src/assets/OPTIKorinna-Agency.otf');
+  src: url('./src/assets/Korinna.otf');
 }
 
 @layer base {
@@ -23,6 +23,10 @@
   h2 {
     @apply text-2xl;
   }
+
+  .container {
+    @apply transition-all;
+  }
 }
 
 @layer components {
@@ -40,5 +44,16 @@
 
   .col {
     @apply flex flex-col;
+  }
+  
+  .board-item {
+    @apply bg-highlight text-gold text-6xl font-black text-shadow-sm font-arial
+      border-4 border-dark border-solid rounded-lg
+      min-h-[100px] min-w-[200px]
+      xl:text-8xl
+  }
+
+  .category {
+    @apply text-4xl xl:text-6xl text-white font-normal font-korinna;
   }
 }

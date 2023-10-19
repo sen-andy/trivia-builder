@@ -22,7 +22,7 @@ const createBoard = asyncHandler(async (req, res) => {
 
 //* GET /api/boards/ - get user's boards
 const getUserBoards = asyncHandler(async (req, res) => {
-    const boards = await Board.find({ creator: req.user._id }).populate('clues creator', 'category name');
+    const boards = await Board.find({ creator: req.user._id }).populate('clues creator', 'category questions name');
 
     res.status(200).json(boards);
 });

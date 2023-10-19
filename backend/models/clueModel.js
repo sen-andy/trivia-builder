@@ -13,16 +13,13 @@ const clueSchema = new mongoose.Schema({
         {
             _id: false,
             type: {
-                type: String,
-                required: true
+                type: String
             },
             question: {
-                type: String,
-                required: true,
+                type: String
             },
             correctResponse: {
-                type: String,
-                required: true
+                type: String
             }
         }
     ]
