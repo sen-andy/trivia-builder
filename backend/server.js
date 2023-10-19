@@ -4,7 +4,7 @@ dotenv.config();
 import connectDB from './config/db.js';
 
 import userRoutes from './routes/userRoutes.js';
-import clueSetRoutes from './routes/clueRoutes.js'
+import clueRoutes from './routes/clueRoutes.js'
 import boardRoutes from './routes/boardRoutes.js'
 
 import cookieParser from 'cookie-parser';
@@ -20,7 +20,7 @@ app.use(cookieParser());
 
 app.use('/api/users', userRoutes);
 app.use('/api/boards', boardRoutes);
-app.use('/api/clues', clueSetRoutes);
+app.use('/api/clues', clueRoutes);
 app.get('/', (req, res) => res.send('Server is ready'));
 
 app.use(notFound);

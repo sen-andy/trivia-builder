@@ -17,7 +17,11 @@
   }
 
   h1 {
-    @apply text-4xl;
+    @apply text-3xl;
+  }
+
+  h2 {
+    @apply text-2xl;
   }
 }
 
@@ -30,8 +34,8 @@
     @apply p-2 border-[1px] border-solid border-gray rounded;
   }
 
-  .btn-blue {
-    @apply w-max p-2 bg-highlight text-light border-none rounded;
+  .primary-btn {
+    @apply w-max p-2 text-light border-none rounded;
   }
 
   .col {

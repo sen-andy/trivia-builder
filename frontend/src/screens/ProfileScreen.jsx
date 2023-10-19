@@ -89,7 +89,7 @@ const ProfileScreen = () => {
                         />
                     </div>
                     { isLoading && <Loader /> }
-                    <button className='btn-blue' type='submit'>Update</button>
+                    <button className='primary-btn bg-highlight' type='submit'>Update</button>
                 </form>
             </div>
         </div>

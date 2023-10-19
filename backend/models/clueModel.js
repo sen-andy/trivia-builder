@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const clueSetSchema = new mongoose.Schema({
+const clueSchema = new mongoose.Schema({
     creator: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
@@ -28,6 +28,6 @@ const clueSetSchema = new mongoose.Schema({
     ]
 }, { timestamps: true });
 
-const ClueSet = mongoose.model('ClueSet', clueSetSchema);
+const Clue = mongoose.model('Clue', clueSchema);
 
-export default ClueSet;
+export default Clue;

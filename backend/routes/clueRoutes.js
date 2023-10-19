@@ -2,11 +2,11 @@ import express from 'express';
 const router = express.Router();
 import { protect } from '../middleware/authMiddleware.js';
 import {
-    createClueSet,
-    getClueSet
+    createClues,
+    getClues
 } from '../controllers/clueControllers.js';
 
-router.post('/create', protect, createClueSet);
-router.get('/', protect, getClueSet);
+router.post('/create', protect, createClues);
+router.get('/', protect, getClues);
 
 export default router;

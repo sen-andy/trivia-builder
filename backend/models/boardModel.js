@@ -14,9 +14,9 @@ const boardSchema = new mongoose.Schema({
         type: Number,
         required: true
     }],
-    clueSets: [{
+    clues: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'ClueSet',
+        ref: 'Clue',
         required: true
     }]
 }, { timestamps: true });

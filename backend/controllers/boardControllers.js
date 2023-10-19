@@ -3,16 +3,14 @@ import Board from '../models/boardModel.js';
 
 //* POST /api/boards/create - create new board
 const createBoard = asyncHandler(async (req, res) => {
-    const { name, scores, clueSets } = req.body;
+    const { name, scores, clues } = req.body;
 
     const board = await Board.create({
         creator: req.user._id,
         name,
         scores,
-        clueSets: clueSets
+        clues
     });
-
-    console.log(board);
 
     if (board) {
         res.status(201).json(board);
@@ -24,9 +22,7 @@ const createBoard = asyncHandler(async (req, res) => {
 
 //* GET /api/boards/ - get user's boards
 const getUserBoards = asyncHandler(async (req, res) => {
-    const boards = await Board.find({ creator: req.user._id });
-
-    console.log(boards);
+    const boards = await Board.find({ creator: req.user._id }).populate('clues creator', 'category name');
 
     res.status(200).json(boards);
 });

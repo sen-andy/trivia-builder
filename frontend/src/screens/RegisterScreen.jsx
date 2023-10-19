@@ -20,7 +20,7 @@ const RegisterScreen = () => {
     const [ register, { isLoading, error }] = useRegisterMutation();
 
     useEffect(() => {
-        if (userInfo) navigate('/');
+        if (userInfo) navigate('/dashboard');
     }, [ userInfo, navigate ]);
 
     const submitHandler = async (e) => {
@@ -31,7 +31,7 @@ const RegisterScreen = () => {
             try {
                 const res = await register({ name, email, password }).unwrap();
                 dispatch(setCredentials({...res}));
-                navigate('/');
+                navigate('/dashboard');
             } catch (err) {
                 toast.error(err?.data?.message || err.error);
             }
@@ -85,7 +85,7 @@ const RegisterScreen = () => {
                         />
                     </div>
                     { isLoading && <Loader /> }
-                    <button className='btn-blue' type='submit'>Sign Up</button>
+                    <button className='primary-btn bg-highlight' type='submit'>Sign Up</button>
                     <div className='flex'>
                         <p>Have an account?</p>
                         <Link to='/login'>Login</Link>
