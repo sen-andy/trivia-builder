@@ -39,7 +39,7 @@
   }
 
   .primary-btn {
-    @apply w-max p-2 text-light border-none rounded;
+    @apply w-max h-max p-2 text-light border-none rounded;
   }
 
   .col {
@@ -49,7 +49,6 @@
   .board-item {
     @apply bg-highlight text-gold text-6xl font-black text-shadow-sm font-arial
       border-4 border-dark border-solid rounded-lg
-      min-h-[100px] min-w-[200px]
       xl:text-8xl
   }
 

@@ -9,7 +9,7 @@ export default {
   theme: {
     screens: {
       'sm': '639px',
-      'md': '767px',
+      'md': '867px',
       'lg': '1279px',
       'xl': '1720px',
       '2xl': '2559px',
