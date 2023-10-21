@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'Korinna';
-  src: url('./src/assets/Korinna.otf');
+  src: url('/src/assets/Korinna.otf');
 }
 
 @layer base {

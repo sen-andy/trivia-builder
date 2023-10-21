@@ -1,5 +1,6 @@
 import { useTheme } from '@table-library/react-table-library/theme';
 import { getTheme } from '@table-library/react-table-library/baseline';
+import { useNavigate } from 'react-router-dom';
 import { useTree, CellTree, TreeExpandClickTypes } from '@table-library/react-table-library/tree';
 import {
 	Table,
@@ -20,6 +21,7 @@ const formatDate = (dateString) => {
 }
 
 const BoardTable = ({ data }) => {
+	const navigate = useNavigate()
 	const resizer = { resizerWidth: 10 };
 	const theme = useTheme([ getTheme(), {
 		Table: `grid-template-columns:  min-content min-content min-content 1fr;`,
@@ -37,7 +39,8 @@ const BoardTable = ({ data }) => {
 		
 		const newData = [...prevValue,
 			{
-				id: reducerIndex,
+				_id: item._id,
+				key: reducerIndex,
 				createdAt: formatDate(item.createdAt),
 				updatedAt: formatDate(item.updatedAt),
 				name: item.name,
@@ -61,6 +64,10 @@ const BoardTable = ({ data }) => {
 		}
 	);
 
+	const selectRow = (id) => {
+		navigate(`/board/${id}`)
+	}
+
 	return (
 		<Table theme={theme} data={formatedData} tree={tree}>
 			{(tableList) => (
@@ -75,7 +82,7 @@ const BoardTable = ({ data }) => {
 				</Header>
 				<Body>
 					{ tableList.map(item => (
-						<Row key={item.id} item={item}>
+						<Row onClick={e => selectRow(item._id)} key={item.key} item={item}>
 							<CellTree item={item}>{item.updatedAt}</CellTree>
 							<Cell>{item.createdAt}</Cell>
 							<Cell>{item.name}</Cell>

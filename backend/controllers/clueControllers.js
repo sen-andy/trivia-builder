@@ -23,8 +23,6 @@ const createClues = asyncHandler(async (req, res) => {
 const getClues = asyncHandler(async (req, res) => {
     const clue = await Clue.find({ creator: req.user._id }).populate("creator", "name");
 
-    console.log(clue);
-
     res.status(200).json(clue);
 });
 

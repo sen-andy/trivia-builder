@@ -1,17 +1,18 @@
 import { useState } from 'react'
-import { setGameData } from '../slices/appSlice'
+import { setContestantsData, setGameData } from '../slices/appSlice'
 import { useDispatch } from 'react-redux'
 
-const BoardForm = ({ startGame }) => {
+const BoardForm = () => {
     const dispatch = useDispatch()
 
-    const [ contestant1, setContestant1 ] = useState('')
-    const [ contestant2, setContestant2 ] = useState('')
-    const [ contestant3, setContestant3 ] = useState('')
+    const [ contestant1, setContestant1] = useState({ name: '', score: 0 })
+    const [ contestant2, setContestant2] = useState({ name: '', score: 0 })
+    const [ contestant3, setContestant3] = useState({ name: '', score: 0 })
 
     const submitHandler = e => {
         e.preventDefault()
-        dispatch(setGameData({contestant1, contestant2, contestant3, gameStarted: true}))
+        dispatch(setContestantsData({contestant1, contestant2, contestant3}))
+        dispatch(setGameData({ gameStarted: true, turnData: [] }))
     }
 
     return (
@@ -27,28 +28,28 @@ const BoardForm = ({ startGame }) => {
                                 className='input'
                                 type='text'
                                 placeholder='Contestant 1'
-                                value={contestant1}
-                                onChange={e => setContestant1(e.target.value)}
+                                value={contestant1.name}
+                                onChange={e => setContestant1({ ...contestant1, name: e.target.value })}
                             />
                         </div>
                         <div className='col'>
-                            <label htmlFor='contestant2'>Contestant's Name</label>
+                            <label>Contestant's Name</label>
                             <input
                                 className='input'
                                 type='text'
                                 placeholder='Contestant 2'
-                                value={contestant2}
-                                onChange={e => setContestant2(e.target.value)}
+                                value={contestant2.name}
+                                onChange={e => setContestant2({ ...contestant2, name: e.target.value })}
                             />
                         </div>
                         <div className='col'>
-                            <label htmlFor='contestant3'>Contestant's Name</label>
+                            <label>Contestant's Name</label>
                             <input
                                 className='input'
                                 type='text'
                                 placeholder='Contestant 3'
-                                value={contestant3}
-                                onChange={e => setContestant3(e.target.value)}
+                                value={contestant3.name}
+                                onChange={e => setContestant3({ ...contestant3, name: e.target.value })}
                             />
                         </div>
                     </div>

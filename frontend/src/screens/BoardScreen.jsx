@@ -2,26 +2,29 @@ import { useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
-import { setGameData } from '../slices/appSlice'
-import { ArrowsPointingOutIcon, ArrowsPointingInIcon } from '@heroicons/react/20/solid'
+import { setGameData, setContestantsData } from '../slices/appSlice'
 import Board from '../components/Board'
 import BoardForm from '../components/BoardForm'
+import Scoreboard from '../components/Scoreboard'
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 const BoardScreen = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const handle = useFullScreenHandle()
     const { board_id } = useParams()
     const { boardData } = useSelector(state => state.data)
     const { gameData } = useSelector(state => state.app)
 
     const currentBoard = boardData.filter(board => board._id === board_id)[0]
 
-    const startGame = () => {
-
-    }
-
     const resetGame = () => {
-        dispatch(setGameData({}))
+        dispatch(setGameData({ gameStarted: false, turnData: [] }))
+        dispatch(setContestantsData({
+            contestant1: { name: 'contestant 1', score: 0 },
+            contestant2: { name: 'contestant 2', score: 0 },
+            contestant3: { name: 'contestant 3', score: 0 },
+        }))
     }
 
     useEffect(() => {
@@ -34,11 +37,10 @@ const BoardScreen = () => {
 
     return (
         <>
-        <Board board={currentBoard} />
-        { gameData.gameStarted
-            ? null
-            : <BoardForm startGame={startGame} />
-        }
+        <FullScreen handle={handle}>
+            <Board board={currentBoard} handle={handle} />
+        </FullScreen>
+        { !gameData?.gameStarted && <BoardForm /> }
         <button onClick={e => resetGame()}>Reset Data</button>
         </>
     )

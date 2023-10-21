@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../components/Loader';
 import { toast } from 'react-toastify';
-import { useGetBoardsQuery } from '../slices/boardsApiSlice.js';
+import { useGetBoardsQuery } from '../slices/boardsApiSlice';
 import { useGetCluesQuery } from '../slices/cluesApiSlice';
 import { setBoardData, setClueData } from '../slices/dataSlice';
 
@@ -36,6 +36,8 @@ const DashboardScreen = () => {
 	const loadBoardTable = () => {
 		if (boardLoading) {
 			return <Loader />
+		} else if (!boardData) {
+			return <h3>Error while loading. Try refreshing or clearing your cache</h3>
 		} else if (boardSuccess && boardData.length === 0) {
 			return <h3>No boards, create one!</h3>
 		} else if (boardSuccess) {
@@ -46,6 +48,8 @@ const DashboardScreen = () => {
 	const loadClueTable = () => {
 		if (clueLoading) {
 			return <Loader />
+		} else if (!clueData) {
+			return <h3>Error while loading. Try refreshing or clearing your cache</h3>
 		} else if (clueSuccess && clueData.length === 0) {
 			return <h3>No clues, create one!</h3>
 		} else if (clueSuccess) {
