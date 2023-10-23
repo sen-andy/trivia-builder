@@ -16,11 +16,11 @@ const BoardForm = () => {
     }
 
     return (
-        <div className='container mx-auto'>
-            <div className='p-8 bg-white col gap-4 w-full'>
+        <div className='col h-full bg-[#fff] md:mt-4 xl:mt-8'>
+            <div className='mx-auto grow gap-4 p-8'>
                 <h1>Game Setup</h1>
 
-                <form className='col gap-4 items-start lg:flex-row lg:items-end lg:justify-between' onSubmit={submitHandler}>
+                <form className='col gap-4 items-start lg:justify-end lg:items-between' onSubmit={submitHandler}>
                     <div className='col gap-4 md:flex-row [&>div]:gap-2'>
                         <div className='col'>
                             <label htmlFor='contestant1'>Contestant's Name</label>
@@ -52,6 +52,10 @@ const BoardForm = () => {
                                 onChange={e => setContestant3({ ...contestant3, name: e.target.value })}
                             />
                         </div>
+                    </div>
+                    <div className='flex gap-2'>
+                        <input type="checkbox" />
+                        <label>Smartphone Buzzer(Under Construction)</label>
                     </div>
                     <button className='primary-btn bg-highlight' type='submit'>Start Game</button>
                 </form>

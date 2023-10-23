@@ -16,9 +16,9 @@ export default {
     },
     extend: {
       textShadow: {
-        sm: '4px 4px 0 #112A46',
-        DEFAULT: '6px 6px 0 #112A46',
-        lg: '8px 8px 0 #112A46',
+        sm: '2px 2px 0 #112A46',
+        DEFAULT: '4px 4px 0 #112A46',
+        lg: '6px 6px 0 #112A46',
       },
       colors: {
         'light': '#e8f2ff',

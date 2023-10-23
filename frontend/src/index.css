@@ -9,23 +9,27 @@
 
 @layer base {
   * {
-    @apply p-0 m-0;
+    @apply p-0 m-0
+  }
+
+  body {
+    @apply bg-white
   }
   
   p, a, h1, h2, h3, label {
-    @apply font-sans text-dark;
+    @apply font-sans text-dark
   }
 
   h1 {
-    @apply text-3xl;
+    @apply text-3xl
   }
 
   h2 {
-    @apply text-2xl;
+    @apply text-2xl
   }
 
   .container {
-    @apply transition-all;
+    @apply transition-all
   }
 }
 
@@ -35,24 +39,41 @@
   }
 
   .input {
-    @apply p-2 border-[1px] border-solid border-gray rounded;
+    @apply p-2 border-[1px] border-solid border-gray rounded
   }
 
   .primary-btn {
-    @apply w-max h-max p-2 text-light border-none rounded;
+    @apply w-max h-max p-2 text-light border-none rounded
   }
 
   .col {
-    @apply flex flex-col;
+    @apply flex flex-col
   }
   
   .board-item {
-    @apply bg-highlight text-gold text-6xl font-black text-shadow-sm font-arial
-      border-4 border-dark border-solid rounded-lg
-      xl:text-8xl
+    @apply bg-highlight text-2xl text-gold font-black text-shadow-sm font-arial
+      border-[1px] border-dark border-solid rounded
+      transition-all
+      md:border-2 md:text-4xl lg:text-6xl lg:rounded-lg xl:text-8xl
+      hover:scale-105 hover:border-light hover:border-2
+      disabled:pointer-events-none
   }
 
   .category {
-    @apply text-4xl xl:text-6xl text-white font-normal font-korinna;
+    @apply text-sm text-white px-2 font-normal font-korinna leading-4
+    md:text-xl lg:text-3xl xl:text-5xl
+    disabled:pointer-events-none
   }
+
+  .name {
+    @apply text-lg text-light bg-dark rounded-l-lg py-1 px-[1vw] my-0.5
+    opacity-75 absolute bottom-0 right-0
+    md:text-xl lg:text-2xl xl:text-4xl
+  }
+
+  .score {
+    @apply text-2xl text-dark text-left py-1 px-[1vw]
+    md:text-4xl lg:text-6xl xl:text-8xl
+  }
+
 }
